@@ -41,8 +41,18 @@ app.post("/search",(req,res)=>{
     )
  })
 
-app.post("/delete",(req,res)=>{
-    res.send("delete")
+ app.post("/delete",(req,res)=>{
+    let input=req.body
+    hostellermodel.findByIdAndDelete(input._id).
+    then(
+        (response)=>{
+            res.json({"status":"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json({"status":"error"})
+        }
+    )
 })
 
 
