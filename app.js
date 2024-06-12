@@ -28,6 +28,19 @@ app.post("/view",(req,res)=>{
     )
 })
 
+app.post("/search",(req,res)=>{
+    let input=req.body
+    hostellermodel.find(input).then(
+     (data)=>{
+         res.json(data)
+     }
+    ).catch(
+     (error)=>{
+         res.json(error)
+     }
+    )
+ })
+
 app.post("/delete",(req,res)=>{
     res.send("delete")
 })
